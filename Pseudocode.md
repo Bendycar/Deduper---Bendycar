@@ -74,7 +74,7 @@ seen = {}
 chrom_num = 1
 
 If needed write out the first few header lines until we hit the actual reads (maybe check while line starts with @, but could be risky...)
-
+```
 while True:
     line = readline(SAM_IN)
     if line == "":
@@ -98,7 +98,7 @@ while True:
     if identifiers not in seen: #On the first read of a new chromosome, we will have just cleared the set so this will alwyas be true
         add to seen
         outfile.write(line)
-
+```
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 TESTCASES:
 
