@@ -15,8 +15,9 @@ To check if any given read shares these characteristics with another, I will cre
 ---------------------------------------------------------------------------------------------------------------------------------------------------
 FUNCTIONS:
 
-get_position(line):
+get_position(line, strandedness):
 ```Takes in a single SAM file line (already split by tab), returns the 5' starting position, ADJUSTED FOR SOFT CLIPPING```
+#Must be able to handle minus strands as well -- ADD all D's, M's, and S's to the RIGHT of M to position. 
 cigar_string = pull out whichever position this is in
 position = wherever that is in split SAM file
 soft_clip_adjustment = the number proceeding S if it is before the M, otherwise returns 0
@@ -90,7 +91,7 @@ while True:
     
     if chr != chrom_num: 
         clear 'seen' set #This ensures that we are only storing one chromosome worth of data in memory at a time
-        chrom_num += 1 
+        chrom_num = chr
     
     identifiers = [position, strandedness, UMI]
 
